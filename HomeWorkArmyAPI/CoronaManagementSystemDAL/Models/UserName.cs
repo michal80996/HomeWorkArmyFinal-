@@ -11,7 +11,7 @@ namespace CoronaManagementSystemDAL.Models
         public string Street { get; set; }
         public string Phone { get; set; }
         public DateTime? BirthDate { get; set; }
-
+        // public byte[] MyImage { get; set; }
         public virtual CoronaDetails CoronaDetails { get; set; }
     }
 }

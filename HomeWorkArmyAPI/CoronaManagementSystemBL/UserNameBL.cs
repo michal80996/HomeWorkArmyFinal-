@@ -8,11 +8,15 @@ using CoronaManagementSystemDAL.Models;
 
 namespace CoronaManagementSystemBL
 {
-    public class UserNameBL
+    public class UserNameBL : IUserNameBL
     {
         IMapper mapper;
-        public UserNameBL()
+        private IUserNameDAL _userNameDAL;
+
+        public UserNameBL(IUserNameDAL userNameDAL)
         {
+            this._userNameDAL = userNameDAL;
+  
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<AutoMapperProfile>();
@@ -21,7 +25,6 @@ namespace CoronaManagementSystemBL
             mapper = config.CreateMapper();
         }
 
-        private UserNameDAL _userNameDAL = new UserNameDAL();
         public List<UserNameDTO> GetAllUserName()
         {
             List<UserName> allUserName = _userNameDAL.GetAllUserNames();
@@ -30,7 +33,7 @@ namespace CoronaManagementSystemBL
 
         public UserNameDTO GetUserById(string id)
         {
-            UserName currentUser=_userNameDAL.GetUserById(id);
+            UserName currentUser = _userNameDAL.GetUserById(id);
             return mapper.Map<UserName, UserNameDTO>(currentUser);
         }
 
@@ -39,15 +42,22 @@ namespace CoronaManagementSystemBL
             return _userNameDAL.DeleatUserName(personId);
         }
 
-        public bool AddFlight(UserNameDTO NewUserName)
+        public UserNameDTO AddUserName(UserNameDTO NewUserName)
         {
-            return _userNameDAL.AddUserName(mapper.Map<UserNameDTO, UserName>(NewUserName));
+            UserName currentUser = _userNameDAL.AddUserName(mapper.Map<UserNameDTO, UserName>(NewUserName));
+            return mapper.Map<UserName, UserNameDTO>(currentUser);
         }
 
 
-        public bool UpdateUserName(string PersonId, UserNameDTO theUserName)
+        public UserNameDTO UpdateUserName(string PersonId, UserNameDTO theUserName)
         {
-            return _userNameDAL.UpdateFlightDetails(PersonId, mapper.Map<UserNameDTO, UserName>(theUserName));
+            UserName theUser = _userNameDAL.UpdateUserName(PersonId, mapper.Map<UserNameDTO, UserName>(theUserName));
+            return mapper.Map<UserName, UserNameDTO>(theUser);
         }
+
+        //public bool uploadFile(byte[] image, string id)
+        //{
+        //   return _userNameDAL.uploadFile(image, id);
+        //}
     }
 }

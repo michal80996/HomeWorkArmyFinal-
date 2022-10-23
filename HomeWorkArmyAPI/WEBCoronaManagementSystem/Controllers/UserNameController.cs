@@ -4,6 +4,7 @@ using CoronaManagementSystemBL;
 using CoronaManagementSystemDTO;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace WEBCoronaManagementSystem.Controllers
 {
@@ -11,52 +12,73 @@ namespace WEBCoronaManagementSystem.Controllers
     [ApiController]
     public class UserNameController : Controller
     {
-       private UserNameBL _UserNameBL = new UserNameBL();
-       
+        private IUserNameBL _UserNameBL;
+
+        public UserNameController(IUserNameBL userNameBL)
+        {
+            _UserNameBL = userNameBL;
+        }
+
         [HttpGet]
         [Route("GetAllUserName")]
-        public IActionResult GetAllUserName()
+        public JsonResult GetAllUserName()
         {
             try
             {
-                return Ok(_UserNameBL.GetAllUserName().ToArray());
+                return new JsonResult (_UserNameBL.GetAllUserName().ToList());
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                throw ex;
             }
         }
 
         [HttpGet]
         [Route("getUserById/{id}")]
-        public IActionResult GetUserById(string id)
+        public JsonResult GetUserById(string id)
         {
             try
             {
-                return Ok(_UserNameBL.GetUserById(id));
+                return new JsonResult(_UserNameBL.GetUserById(id));
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                throw ex;
             }
         }
 
         [HttpPut]
         [Route("UpdateUserName/{personId}")]
-        public bool UpdateUserName(String personId, [FromBody] UserNameDTO theUserName)
+        public IActionResult UpdateUserName(String personId, [FromBody] UserNameDTO theUserName)
         {
-            return _UserNameBL.UpdateUserName(personId, theUserName);
+            var updateUser= _UserNameBL.UpdateUserName(personId, theUserName);
+            return Ok(updateUser);
         }
+
+        //[HttpPut]
+        //[Route("uploadFile")]
+        //public IActionResult uploadFile( byte[] image, string id)
+        //{
+        //    try
+        //    {
+        //       return Ok(_UserNameBL.uploadFile(image, id));
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
         [HttpPost]
         [Route("AddUserName")]
-        public bool AddUserName(UserNameDTO NewUserName)
+        public IActionResult AddUserName([FromBody] UserNameDTO NewUserName)
         {
-            return _UserNameBL.AddFlight(NewUserName);
+            var addUser= _UserNameBL.AddUserName(NewUserName);
+            return Ok(addUser);
         }
 
         [HttpDelete]
-        [Route("DeleteUserName")]
+        [Route("DeleteUserName/{personId}")]
         public bool DeleteUserName( string personId)
         {  
             return _UserNameBL.DeleatUserName(personId);

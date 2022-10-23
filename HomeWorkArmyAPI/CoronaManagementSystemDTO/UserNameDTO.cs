@@ -10,5 +10,6 @@ namespace CoronaManagementSystemDTO
         public string Street { get; set; }
         public string Phone { get; set; }
         public DateTime? BirthDate { get; set; }
+       // public byte[] MyImage { get; set; }
     }
 }

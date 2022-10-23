@@ -6,10 +6,10 @@ using System.Text;
 
 namespace CoronaManagementSystemDAL
 {
-    public class UserNameDAL
+    public class UserNameDAL : IUserNameDAL
     {
         CoronaManagementSystemContext _context = new CoronaManagementSystemContext();
-        CoronaDetailsDAL _UserNameDAL = new CoronaDetailsDAL();
+        CoronaDetailsDAL _CoronaDetailsDAL = new CoronaDetailsDAL();
         public List<UserName> GetAllUserNames()
         {
             try
@@ -34,6 +34,21 @@ namespace CoronaManagementSystemDAL
             }
         }
 
+        //public bool uploadFile(byte[] image,string id)
+        //{
+        //    try
+        //    {
+        //        UserName userName = _context.UserName.SingleOrDefault(x => x.PersonId.Equals(id));
+        //        userName.MyImage = image;
+        //        return true;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
+
+
         public bool DeleatUserName(string PersonId)
         {
             try
@@ -49,14 +64,15 @@ namespace CoronaManagementSystemDAL
             }
         }
 
-        public bool AddUserName(UserName newUserName)
+        public UserName AddUserName(UserName newUserName)
         {
             try
             {
                 _context.UserName.Add(newUserName);
-                _UserNameDAL.AddUserNameDetails(newUserName.PersonId);
                 _context.SaveChanges();
-                return true;
+                _CoronaDetailsDAL.AddUserNameDetails(newUserName.PersonId);
+                _context.SaveChanges();
+                return newUserName;
             }
             catch (Exception ex)
             {
@@ -65,14 +81,17 @@ namespace CoronaManagementSystemDAL
         }
 
 
-        public bool UpdateFlightDetails(String id, UserName userName)
+        public UserName UpdateUserName(string id, UserName userName)
         {
             try
             {
                 UserName currentUserName = _context.UserName.SingleOrDefault(x => x.PersonId == id);
-                _context.Entry(currentUserName).CurrentValues.SetValues(userName);
-                _context.SaveChanges();
-                return true;
+                if (currentUserName != null)
+                {
+                    _context.Entry(currentUserName).CurrentValues.SetValues(userName);
+                    _context.SaveChanges();
+                }
+                return currentUserName;
             }
             catch (Exception ex)
             {

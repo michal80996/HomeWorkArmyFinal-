@@ -42,7 +42,25 @@ namespace CoronaManagementSystemDAL.Models
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
+                entity.Property(e => e.CoronaManufacturer2)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CoronaManufacturer3)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CoronaManufacturer4)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.CoronaVaccine).HasColumnType("date");
+
+                entity.Property(e => e.CoronaVaccine2).HasColumnType("date");
+
+                entity.Property(e => e.CoronaVaccine3).HasColumnType("date");
+
+                entity.Property(e => e.CoronaVaccine4).HasColumnType("date");
 
                 entity.Property(e => e.PositiveForCorona).HasColumnType("date");
 
