@@ -5,7 +5,6 @@
 
 <h4>The number of people getting vaccinated every day in the last month</h4>
 <button (click)="onCheckTheNumberOfVaccinators()">Check</button>
-<div *ngFor="let f of numOfVaccinators; let i =index">
-
-
+<div *ngIf="openDetails">
+<h6 *ngFor="let f of vaccineInMonth; let i =index">Day {{i+1}} : {{f}}</h6>
 </div>

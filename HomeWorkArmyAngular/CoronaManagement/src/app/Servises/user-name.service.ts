@@ -64,4 +64,8 @@ GetCoronaDetailsByIdFromServer(id:string): Observable<CoronaDetails> {
      return this.myHttp.post<void>(`${this.myUrlService}/${'UserName/uploadFile'}/${id}`, fd);
   }
 
+  numberOfVaccinatorsInMonth():Observable<number[]>{
+    return this.myHttp.get<any[]>(`${this.myUrlService}/${'CoronaDetails/numberOfVaccinatorsInMonth'}`);
+  }
+
 }

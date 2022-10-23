@@ -17,7 +17,7 @@ export class CoronaDetailsComponent implements OnInit {
   public numsActivesCorona: number = 0
   public numOfVaccinators: number[] = []
 
-  public dateNow: Date = new Date()
+  public vaccineInMonth:number[]=[]
 
 
 
@@ -38,6 +38,12 @@ export class CoronaDetailsComponent implements OnInit {
         console.log(this.coronaDetails)
       })
 
+      this.UserNameServ.numberOfVaccinatorsInMonth().subscribe(
+        (data) => {
+          this.vaccineInMonth = data
+          console.log(this.vaccineInMonth)
+        })
+
 
   }
 
@@ -53,33 +59,7 @@ export class CoronaDetailsComponent implements OnInit {
 
   //בודק את מס' המתחסנים כל יום בחודש האחרון
   onCheckTheNumberOfVaccinators() {
-    debugger
-    this.coronaDetails.forEach(element => {
-      if (element.CoronaVaccine) {
-        console.log(element.CoronaVaccine.getFullYear)
-        if (element.CoronaVaccine.getFullYear == this.dateNow.getFullYear
-          && element.CoronaVaccine.getMonth == this.dateNow.getMonth) {
-          this.numOfVaccinators[element.CoronaVaccine.getDay()]++;
-        }
-      }
-      if (element.CoronaVaccine_2) {
-        if (element.CoronaVaccine_2.getFullYear == this.dateNow.getFullYear
-          && element.CoronaVaccine_2.getMonth == this.dateNow.getMonth) {
-          this.numOfVaccinators[element.CoronaVaccine_2.getDay()]++;
-        }
-      } if (element.CoronaVaccine_3) {
-        if (element.CoronaVaccine_3.getFullYear == this.dateNow.getFullYear
-          && element.CoronaVaccine_3.getMonth == this.dateNow.getMonth) {
-          this.numOfVaccinators[element.CoronaVaccine_3.getDay()]++;
-        }
-      }
-      if (element.CoronaVaccine_4) {
-        if (element.CoronaVaccine_4.getFullYear == this.dateNow.getFullYear
-          && element.CoronaVaccine_4.getMonth == this.dateNow.getMonth) {
-          this.numOfVaccinators[element.CoronaVaccine_4.getDay()]++;
-        }
-      }
-    })
+    this.openDetails=!this.openDetails
+    console.log(this.vaccineInMonth)
   }
-
 }
