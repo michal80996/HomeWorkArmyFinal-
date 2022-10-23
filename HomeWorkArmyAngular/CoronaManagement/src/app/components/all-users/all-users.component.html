@@ -1,0 +1,182 @@
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Person Id</th>
+                <th>Full Name</th>
+                <th>City</th>
+                <th>Street</th>
+                <th>Phone</th>
+                <th>Birth Date</th>
+                <th>Image</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let data of allUsers">
+                <td>{{data.PersonId}}</td>
+                <td>{{data.FullName}}</td>
+                <td>{{data.City}}</td>
+                <td>{{data.Street}}</td>
+                <td>{{data.Phone}}</td>
+                <td>{{data.BirthDate | date : "dd/MM/yyyy"}}</td>
+                <td><img id="myimage" [src]='data.myImage' ></td>
+                <td>
+                    <button type="button" 
+                    class="btn btn-light mr-1"
+                    (click)="onCoronaDetailsClick(data.PersonId)"
+                    >Corona Details</button>
+
+                    <button type="button" 
+                    class="btn btn-light mr-1"
+                    (click)="onOpenUpdateClick(data)"
+                    >Update User</button>
+
+                    <button type="button" 
+                    class="btn btn-light mr-1"
+                    (click)="onDeleteClick(data.PersonId)"
+                    >Delete User</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+<div *ngIf="openDetails">
+    <div class="allDetails" >
+        <h6>Person Id: 
+            <input type="text" 
+            [(ngModel)]="oneCoronaDetails.PersonId" 
+            value="{{oneCoronaDetails.PersonId}}">
+        </h6>
+
+        <h6>Corona Vaccine Date_1: 
+            <input type="date" 
+            name="corona"
+            [(ngModel)]="oneCoronaDetails.CoronaVaccine" 
+            max= "{{dateNow | date:'yyyy-mm-dd'}}"
+            value="oneCoronaDetails.CoronaVaccine">
+            {{oneCoronaDetails.CoronaVaccine | date:'dd-mm-yyyy'}}
+        </h6>
+        <h6>Corona Manufacturer_1: 
+            <input type="text"
+            name="corona" 
+            pattern="[A-Za-z ]"
+            [(ngModel)]="oneCoronaDetails.CoronaManufacturer" 
+            value="{{oneCoronaDetails.CoronaManufacturer}}">
+        </h6>
+        <h6>Corona Vaccine Date_2: 
+            <input type="date" 
+            name="corona"
+            [(ngModel)]="oneCoronaDetails.CoronaVaccine_2" 
+            max= "{{dateNow | date:'dd-mm-yyyy'}}"
+            value="{{oneCoronaDetails.CoronaVaccine_2}}">
+            {{oneCoronaDetails.CoronaVaccine_2 | date:'dd-mm-yyyy'}}
+        </h6>
+        <h6>Corona Manufacturer_2: 
+            <input type="text"
+            name="corona" 
+           pattern="[A-Z a-z]+"
+            [(ngModel)]="oneCoronaDetails.CoronaManufacturer_2" 
+            value="{{oneCoronaDetails.CoronaManufacturer_2}}">
+        </h6>
+        <h6>Corona Vaccine Date_3: 
+            <input type="date" 
+            name="corona"
+            [(ngModel)]="oneCoronaDetails.CoronaVaccine_3" 
+            max= "{{dateNow | date:'yyyy-mm-dd'}}"
+            value="{{oneCoronaDetails.CoronaVaccine_3}}">
+            {{oneCoronaDetails.CoronaVaccine_3 | date:'dd-mm-yyyy'}}
+
+        </h6>
+        <h6>Corona Manufacturer_3: 
+            <input type="text"
+            name="corona" 
+            pattern="[A-Z a-z]+"
+            [(ngModel)]="oneCoronaDetails.CoronaManufacturer_3" 
+            value="{{oneCoronaDetails.CoronaManufacturer_3}}">
+        </h6>
+        <h6>Corona Vaccine Date_4: 
+            <input type="date" 
+            name="corona"
+            [(ngModel)]="oneCoronaDetails.CoronaVaccine_4" 
+            max= "{{dateNow | date:'yyyy-mm-dd'}}"
+            value="{{oneCoronaDetails.CoronaVaccine_4}}">
+            {{oneCoronaDetails.CoronaVaccine_4 | date:'dd-mm-yyyy'}}
+        </h6>
+        <h6>Corona Manufacturer_4: 
+            <input type="text"
+            name="corona" 
+            pattern="[A-Z a-z]+"
+            [(ngModel)]="oneCoronaDetails.CoronaManufacturer_4" 
+            value="{{oneCoronaDetails.CoronaManufacturer_4}}">
+        </h6>
+        <h6>Positive For Corona Date: 
+            <input type="date" 
+            name="corona"
+            [(ngModel)]="oneCoronaDetails.PositiveForCorona" 
+            max= "{{dateNow | date:'yyyy-mm-dd'}}"
+            value="{{oneCoronaDetails.PositiveForCorona}}">
+            {{oneCoronaDetails.PositiveForCorona | date:'dd-mm-yyyy'}}
+        </h6>
+        <h6>Recovering From Corona Date: 
+            <input type="date" 
+            name="corona"
+            [(ngModel)]="oneCoronaDetails.RecoveringFromCorona" 
+            max= "{{dateNow | date:'yyyy-mm-dd'}}"
+            value="{{oneCoronaDetails.RecoveringFromCorona}}">
+            {{oneCoronaDetails.RecoveringFromCorona | date:'dd-mm-yyyy'}}
+        </h6>
+        <button type="button" 
+        class="btn btn-light mr-1"
+        (click)="onUpdateCoronaDetails(oneCoronaDetails)"
+        >Update</button>
+    </div>
+</div>
+
+
+    <div class="updateUser" 
+    *ngIf="isStatusUpdate">
+         Person Id: 
+         <input type="text" name="id" 
+         pattern="[0-9]+.{9,}"
+         [(ngModel)]="updateUser.PersonId" 
+         value="{{updateUser.PersonId}}" required><br>
+
+         Full Name: 
+         <input type="text" name="id" 
+         [(ngModel)]="updateUser.FullName" 
+         pattern="[A-Z a-z]+"
+         value="{{updateUser.FullName}}"><br>
+
+         City: <input type="text" 
+         name="id" [(ngModel)]="updateUser.City" 
+         pattern="[A-Z a-z]+"
+         value="{{updateUser.City}}"><br>
+
+         Street: <input type="text" name="id" 
+         [(ngModel)]="updateUser.Street" 
+         value="{{updateUser.Street}}"><br>
+
+         Phone: <input type="text" 
+         name="id" [(ngModel)]="updateUser.Phone" 
+         pattern="05?[0-9]-?[0-9]{7}"
+         value="{{updateUser.Phone}}"><br>
+
+         Birth Date:<input type="date"
+         value="{{updateUser.BirthDate}}"
+         max= "{{dateNow | date:'yyyy-mm-dd'}}"
+         name="id" [(ngModel)]="updateUser.BirthDate" 
+         >
+         {{updateUser.BirthDate | date : "dd/MM/yyyy"}}<br>
+
+         <button type="button" 
+          class="btn btn-light mr-1"
+          (click)="onUpdateClick(updateUser)"
+         >Update User</button>
+    </div>
+
+           
+          
+        
+    

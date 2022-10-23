@@ -1,0 +1,22 @@
+<form #f="ngForm" (submit)="onAddedClick()">
+<h4>Add User Name</h4>
+
+<div class="addUser">
+    Person Id: <input type="text" name="id" [(ngModel)]="addUser.PersonId" pattern="[0-9]+.{8,}" title="אנא הזן מספרים בלבד"
+    required="true"><br>
+    Full Name: <input type="text" name="name" [(ngModel)]="addUser.FullName" name="name" pattern="[A-Z a-z]+" 
+        title="אנא הזן אותיות A-Z בלבד"required="true" ><br>
+    City: <input type="text" name="city" [(ngModel)]="addUser.City" pattern="[A-Z a-z]+"><br>
+    Street: <input type="text" name="street" [(ngModel)]="addUser.Street"><br>
+    Phone: <input type="text" name="phone" pattern="05?[0-9]-?[0-9]{7}" title="אנא הזן מספר סלולרי תקין"
+        [(ngModel)]="addUser.Phone"><br>
+    Birth Date: <input type="date" name="date" max= "{{dateNow | date:'yyyy-mm-dd'}}"><br>
+
+    <input type="file" (change)="onFileChanged($event)" name="img" [(ngModel)]="addUser.myImage" #fileInput>
+    <button (click)="onUpload(addUser.PersonId)">Upload!</button>
+    <br><br>
+    <button mat-raised-button color="primary" type="submit">Add User </button>
+    
+</div>
+</form>
+<label *ngIf="!isStatusAdded" class="col-form-label">Please Check your Details</label>
