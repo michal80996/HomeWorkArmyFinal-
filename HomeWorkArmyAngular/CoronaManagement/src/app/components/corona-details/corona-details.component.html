@@ -1,12 +1,13 @@
 <h4>The number of active patients</h4>
 <button (click)="onCheckNumOfThePositive()">Check</button>
-<h5>{{numsActivesCorona}}</h5>
+<h5 *ngIf="isChecked">{{numsActivesCorona}}</h5>
 
 
 <h4>The number of people getting vaccinated every day in the last month</h4>
 <button (click)="onCheckTheNumberOfVaccinators()">Check</button>
 <div *ngIf="openDetails">
 <h6 *ngFor="let f of vaccineInMonth; let i =index">Day {{i+1}} : {{f}}</h6>
-
+<!--
 <canvas id="myChart" width="400" height="400"></canvas>
+-->
 </div>

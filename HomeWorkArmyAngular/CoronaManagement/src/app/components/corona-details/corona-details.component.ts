@@ -13,13 +13,14 @@ export class CoronaDetailsComponent implements OnInit {
   public coronaDetails: CoronaDetails[] = []
   public idForDetails: string = ""
   public openDetails: boolean = false
+  public isChecked:boolean=false
 
   public numsActivesCorona: number = 0
   public numOfVaccinators: number[] = []
 
   public vaccineInMonth:number[]=[]
 
-  
+  /*
   public  myChart = new Chart("myChart", {
     type: 'bar',
     data: {
@@ -52,7 +53,7 @@ export class CoronaDetailsComponent implements OnInit {
         }
       }
 });
-
+*/
 
   constructor(private UserNameServ: UserNameService) { }
 
@@ -81,11 +82,13 @@ export class CoronaDetailsComponent implements OnInit {
 
   //בודק את מס' החולים הפעילים
   onCheckNumOfThePositive() {
+    if(!this.isChecked){
     this.coronaDetails.forEach(element => {
       if (element.PositiveForCorona && !element.RecoveringFromCorona)
         this.numsActivesCorona++;
     });
-    this.openDetails = !this.openDetails
+  }
+    this.isChecked = true
   }
 
 

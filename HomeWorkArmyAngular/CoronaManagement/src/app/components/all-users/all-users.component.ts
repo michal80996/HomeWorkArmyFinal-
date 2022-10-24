@@ -55,9 +55,11 @@ export class AllUsersComponent implements OnInit {
   //עידכון פרטי קורונה
   onUpdateCoronaDetails(coronaDetails:CoronaDetails){
     if(coronaDetails.PersonId!="")
+    debugger
       this.UserNameServ.updateCoronaDetails(coronaDetails.PersonId,coronaDetails).subscribe(
-        ()=>{console.log('Update')} 
+        ()=>{console.log(coronaDetails)} 
       )
+      console.log(coronaDetails)
       location.reload();
   }
   //עידכון פרטי משתמש

@@ -21,11 +21,11 @@ namespace WEBCoronaManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllUserName")]
-        public JsonResult GetAllUserName()
+        public IActionResult GetAllUserName()
         {
             try
             {
-                return new JsonResult (_UserNameBL.GetAllUserName().ToList());
+                return Ok (_UserNameBL.GetAllUserName().ToList());
             }
             catch (Exception ex)
             {
@@ -51,8 +51,16 @@ namespace WEBCoronaManagementSystem.Controllers
         [Route("UpdateUserName/{personId}")]
         public IActionResult UpdateUserName(String personId, [FromBody] UserNameDTO theUserName)
         {
-            var updateUser= _UserNameBL.UpdateUserName(personId, theUserName);
-            return Ok(updateUser);
+            try
+            {
+                var updateUser = _UserNameBL.UpdateUserName(personId, theUserName);
+                return Ok(updateUser);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+           
         }
 
         //[HttpPut]
@@ -73,15 +81,30 @@ namespace WEBCoronaManagementSystem.Controllers
         [Route("AddUserName")]
         public IActionResult AddUserName([FromBody] UserNameDTO NewUserName)
         {
-            var addUser= _UserNameBL.AddUserName(NewUserName);
-            return Ok(addUser);
+            try 
+            { 
+                var addUser= _UserNameBL.AddUserName(NewUserName);
+                return Ok(addUser);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete]
         [Route("DeleteUserName/{personId}")]
         public bool DeleteUserName( string personId)
-        {  
-            return _UserNameBL.DeleatUserName(personId);
+        {
+            try
+            {
+                return _UserNameBL.DeleatUserName(personId);
+            }
+            catch
+            {
+                return false;
+            }
+           
         }
     }
 }

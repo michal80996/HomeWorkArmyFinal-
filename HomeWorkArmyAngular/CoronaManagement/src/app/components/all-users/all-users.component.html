@@ -46,6 +46,7 @@
     <div class="allDetailsCorona" >
         <h6>Person Id: 
             <input type="text" 
+            name="id"
             [(ngModel)]="oneCoronaDetails.PersonId" 
             value="{{oneCoronaDetails.PersonId}}">
         </h6>
@@ -54,7 +55,7 @@
             <input type="date" 
             name="corona"
             [(ngModel)]="oneCoronaDetails.CoronaVaccine" 
-            max= "{{dateNow | date:'yyyy-mm-dd'}}"
+            max= "{{dateNow | date:'dd-mm-yyyy'}}"
             value="oneCoronaDetails.CoronaVaccine">
             {{oneCoronaDetails.CoronaVaccine | date:'dd-mm-yyyy'}}
         </h6>
@@ -84,7 +85,7 @@
             <input type="date" 
             name="corona"
             [(ngModel)]="oneCoronaDetails.CoronaVaccine_3" 
-            max= "{{dateNow | date:'yyyy-mm-dd'}}"
+            max= "{{dateNow | date:'dd-mm-yyyy'}}"
             value="{{oneCoronaDetails.CoronaVaccine_3}}">
             {{oneCoronaDetails.CoronaVaccine_3 | date:'dd-mm-yyyy'}}
 
@@ -100,7 +101,7 @@
             <input type="date" 
             name="corona"
             [(ngModel)]="oneCoronaDetails.CoronaVaccine_4" 
-            max= "{{dateNow | date:'yyyy-mm-dd'}}"
+            max= "{{dateNow | date:'dd-mm-yyyy'}}"
             value="{{oneCoronaDetails.CoronaVaccine_4}}">
             {{oneCoronaDetails.CoronaVaccine_4 | date:'dd-mm-yyyy'}}
         </h6>

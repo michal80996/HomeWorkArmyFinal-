@@ -54,8 +54,8 @@ GetCoronaDetailsByIdFromServer(id:string): Observable<CoronaDetails> {
   return this.myHttp.get<CoronaDetails>(`${this.myUrlService}/${'CoronaDetails/getCoronaDetailById'}/${id}`);
 }
    //עידכון פרטי קורונה בשרת המקומי
-   updateCoronaDetails(personId:string ,coronaDetails:CoronaDetails) {
-    return this.myHttp.put(`${this.myUrlService}/${'CoronaDetails/UpdateCoronaDetails'}/${personId}`,coronaDetails)
+   updateCoronaDetails(personId:string ,coronaDetails:CoronaDetails):Observable<void> {
+    return this.myHttp.put<void>(`${this.myUrlService}/${'CoronaDetails/UpdateCoronaDetails'}/${personId}`,coronaDetails)
   }
 
   
