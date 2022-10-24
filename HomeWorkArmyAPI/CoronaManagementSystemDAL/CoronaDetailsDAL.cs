@@ -83,19 +83,13 @@ namespace CoronaManagementSystemDAL
             {
                 if (dateVaccine1[i].Year == yearNow && dateVaccine1[i].Month == monthNow)
                     vaccitors[dateVaccine1[i].Day + 1]++;
-            }
-            for (int i = 0; i < dateVaccine2.Length; i++)
-            {
+
                 if (dateVaccine2[i].Year == yearNow && dateVaccine2[i].Month == monthNow)
                     vaccitors[dateVaccine2[i].Day + 1]++;
-            }
-            for (int i = 0; i < dateVaccine3.Length; i++)
-            {
-                if (dateVaccine3[i].Year == yearNow && dateVaccine3[i].Month == monthNow)
+           
+             if (dateVaccine3[i].Year == yearNow && dateVaccine3[i].Month == monthNow)
                     vaccitors[dateVaccine3[i].Day + 1]++;
-            }
-            for (int i = 0; i < dateVaccine4.Length; i++)
-            {
+     
                 if (dateVaccine4[i].Year == yearNow && dateVaccine4[i].Month == monthNow)
                     vaccitors[dateVaccine4[i].Day + 1]++;
             }

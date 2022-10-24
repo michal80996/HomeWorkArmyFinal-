@@ -19,4 +19,13 @@
     
 </div>
 </form>
-<label *ngIf="!isStatusAdded" class="col-form-label">Please Check your Details</label>
+<label *ngIf="!isStatusAdded" class="col-form-label"  style="color: red;">Please Check your Details</label>
+
+
+<div style="text-align:center">
+	<div [innerHtml]='msg' *ngIf="msg" style="color: red; height:20px"></div>
+	<div><img [src]="url" *ngIf="url"></div>
+	<p>
+		<input type="file" (change)="selectFile($event)">
+	</p>
+</div>

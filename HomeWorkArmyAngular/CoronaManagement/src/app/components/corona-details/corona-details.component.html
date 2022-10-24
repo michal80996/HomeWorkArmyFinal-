@@ -7,4 +7,6 @@
 <button (click)="onCheckTheNumberOfVaccinators()">Check</button>
 <div *ngIf="openDetails">
 <h6 *ngFor="let f of vaccineInMonth; let i =index">Day {{i+1}} : {{f}}</h6>
+
+<canvas id="myChart" width="400" height="400"></canvas>
 </div>

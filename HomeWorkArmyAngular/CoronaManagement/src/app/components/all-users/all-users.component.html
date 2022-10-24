@@ -43,7 +43,7 @@
 
 
 <div *ngIf="openDetails">
-    <div class="allDetails" >
+    <div class="allDetailsCorona" >
         <h6>Person Id: 
             <input type="text" 
             [(ngModel)]="oneCoronaDetails.PersonId" 
@@ -116,7 +116,7 @@
             name="corona"
             [(ngModel)]="oneCoronaDetails.PositiveForCorona" 
             max= "{{dateNow | date:'yyyy-mm-dd'}}"
-            value="{{oneCoronaDetails.PositiveForCorona}}">
+            value="{{oneCoronaDetails.PositiveForCorona }}">
             {{oneCoronaDetails.PositiveForCorona | date:'dd-mm-yyyy'}}
         </h6>
         <h6>Recovering From Corona Date: 

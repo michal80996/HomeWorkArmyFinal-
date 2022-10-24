@@ -1,6 +1,6 @@
 
 import { BrowserModule } from '@angular/platform-browser';
-
+import { ChartsModule } from 'ng2-charts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AllUsersComponent } from './components/all-users/all-users.component';
@@ -29,6 +29,7 @@ import { AddUpdateUserComponent } from './components/all-users/add-update-user/a
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ChartsModule
    
    
   ],
