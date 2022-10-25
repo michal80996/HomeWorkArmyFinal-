@@ -35,9 +35,10 @@ namespace CoronaManagementSystemBL
             CoronaDetails currentUser = _CoronaDetailsDAL.getCoronaDetailById(id);
             return mapper.Map<CoronaDetails, CoronaDetailsDTO>(currentUser);
         }
-        public bool UpdateCoronaDetails(string PersonId, CoronaDetailsDTO theUserName)
+        public CoronaDetailsDTO UpdateCoronaDetails(string PersonId, CoronaDetailsDTO theUserName)
         {
-            return _CoronaDetailsDAL.UpdateCoronaDetails(PersonId, mapper.Map<CoronaDetailsDTO, CoronaDetails>(theUserName));
+            CoronaDetails currentUser = _CoronaDetailsDAL.UpdateCoronaDetails(PersonId,mapper.Map<CoronaDetailsDTO,CoronaDetails>(theUserName));
+            return mapper.Map<CoronaDetails, CoronaDetailsDTO>(currentUser);
         }
 
         public int[] numberOfVaccinatorsInMonth()

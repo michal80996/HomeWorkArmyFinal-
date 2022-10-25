@@ -54,10 +54,11 @@ export class AllUsersComponent implements OnInit {
 
   //עידכון פרטי קורונה
   onUpdateCoronaDetails(coronaDetails:CoronaDetails){
+  debugger
     if(coronaDetails.PersonId!="")
-    debugger
       this.UserNameServ.updateCoronaDetails(coronaDetails.PersonId,coronaDetails).subscribe(
-        ()=>{console.log(coronaDetails)} 
+        ()=>{console.log(coronaDetails)} ,
+        (err)=>console.log(err)
       )
       console.log(coronaDetails)
       location.reload();

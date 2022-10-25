@@ -55,9 +55,9 @@
             <input type="date" 
             name="corona"
             [(ngModel)]="oneCoronaDetails.CoronaVaccine" 
-            max= "{{dateNow | date:'dd-mm-yyyy'}}"
+            max= "{{dateNow | date}}"
             value="oneCoronaDetails.CoronaVaccine">
-            {{oneCoronaDetails.CoronaVaccine | date:'dd-mm-yyyy'}}
+            {{oneCoronaDetails.CoronaVaccine | date: "dd/MM/yyyy"}}
         </h6>
         <h6>Corona Manufacturer_1: 
             <input type="text"
@@ -70,9 +70,9 @@
             <input type="date" 
             name="corona"
             [(ngModel)]="oneCoronaDetails.CoronaVaccine_2" 
-            max= "{{dateNow | date:'dd-mm-yyyy'}}"
+            max= "{{dateNow | date:'yyyy-mm-dd'}}"
             value="{{oneCoronaDetails.CoronaVaccine_2}}">
-            {{oneCoronaDetails.CoronaVaccine_2 | date:'dd-mm-yyyy'}}
+            {{oneCoronaDetails.CoronaVaccine_2 | date: "dd/MM/yyyy"}}
         </h6>
         <h6>Corona Manufacturer_2: 
             <input type="text"
@@ -85,11 +85,12 @@
             <input type="date" 
             name="corona"
             [(ngModel)]="oneCoronaDetails.CoronaVaccine_3" 
-            max= "{{dateNow | date:'dd-mm-yyyy'}}"
+            max= "{{dateNow |  date:'yyyy-mm-dd'}}"
             value="{{oneCoronaDetails.CoronaVaccine_3}}">
-            {{oneCoronaDetails.CoronaVaccine_3 | date:'dd-mm-yyyy'}}
+            {{oneCoronaDetails.CoronaVaccine_3 |date: "dd/MM/yyyy"}}
 
         </h6>
+
         <h6>Corona Manufacturer_3: 
             <input type="text"
             name="corona" 
@@ -101,9 +102,9 @@
             <input type="date" 
             name="corona"
             [(ngModel)]="oneCoronaDetails.CoronaVaccine_4" 
-            max= "{{dateNow | date:'dd-mm-yyyy'}}"
+            max= "{{dateNow | date:'yyyy-mm-dd'}}"
             value="{{oneCoronaDetails.CoronaVaccine_4}}">
-            {{oneCoronaDetails.CoronaVaccine_4 | date:'dd-mm-yyyy'}}
+            {{oneCoronaDetails.CoronaVaccine_4 | date: "dd/MM/yyyy"}}
         </h6>
         <h6>Corona Manufacturer_4: 
             <input type="text"
@@ -118,7 +119,7 @@
             [(ngModel)]="oneCoronaDetails.PositiveForCorona" 
             max= "{{dateNow | date:'yyyy-mm-dd'}}"
             value="{{oneCoronaDetails.PositiveForCorona }}">
-            {{oneCoronaDetails.PositiveForCorona | date:'dd-mm-yyyy'}}
+            {{oneCoronaDetails.PositiveForCorona | date: "dd/MM/yyyy"}}
         </h6>
         <h6>Recovering From Corona Date: 
             <input type="date" 
@@ -126,7 +127,7 @@
             [(ngModel)]="oneCoronaDetails.RecoveringFromCorona" 
             max= "{{dateNow | date:'yyyy-mm-dd'}}"
             value="{{oneCoronaDetails.RecoveringFromCorona}}">
-            {{oneCoronaDetails.RecoveringFromCorona | date:'dd-mm-yyyy'}}
+            {{oneCoronaDetails.RecoveringFromCorona | date: "dd/MM/yyyy"}}
         </h6>
         <button type="button" 
         class="btn btn-light mr-1"

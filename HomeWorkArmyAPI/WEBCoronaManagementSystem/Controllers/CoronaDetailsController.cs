@@ -51,11 +51,11 @@ namespace WEBCoronaManagementSystem.Controllers
 
         [HttpGet]
         [Route("getCoronaDetailById/{id}")]
-        public JsonResult getCoronaDetailById(string id)
+        public IActionResult getCoronaDetailById(string id)
         {
             try
             {
-                return new JsonResult(_coronaDetailsBL.getCoronaDetailById(id));
+                return Ok(_coronaDetailsBL.getCoronaDetailById(id));
             }
             catch (Exception ex)
             {
@@ -65,11 +65,17 @@ namespace WEBCoronaManagementSystem.Controllers
 
         [HttpPut]
         [Route("UpdateCoronaDetails/{personId}")]
-        public bool UpdateCoronaDetails( String personId,[FromBody] CoronaDetailsDTO theCoronaDetails)
+        public IActionResult UpdateCoronaDetails( String personId,[FromBody] CoronaDetailsDTO theCoronaDetails)
         {
-            return _coronaDetailsBL.UpdateCoronaDetails(personId, theCoronaDetails);
+            try
+            {
+                return Ok(_coronaDetailsBL.UpdateCoronaDetails(personId, theCoronaDetails));
+
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
-
-
     }
 }

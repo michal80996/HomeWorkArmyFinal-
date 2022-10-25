@@ -51,20 +51,25 @@ namespace CoronaManagementSystemDAL
         }
 
 
-        public bool UpdateCoronaDetails(String id, CoronaDetails userNameCoronaDetials)
+        public CoronaDetails UpdateCoronaDetails(String id, CoronaDetails userNameCoronaDetials)
         {
+            CoronaDetails currentUserName = _context.CoronaDetails.SingleOrDefault(x => x.PersonId == id);
             try
             {
-                CoronaDetails currentUserName = _context.CoronaDetails.SingleOrDefault(x => x.PersonId == id);
-                _context.Entry(currentUserName).CurrentValues.SetValues(userNameCoronaDetials);
-                _context.SaveChanges();
-                return true;
+                if(currentUserName != null)
+                {
+                    _context.Entry(currentUserName).CurrentValues.SetValues(userNameCoronaDetials);
+                    _context.SaveChanges();
+                }
+                return currentUserName;
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
 
         public int[] numberOfVaccinatorsInMonth()
         {

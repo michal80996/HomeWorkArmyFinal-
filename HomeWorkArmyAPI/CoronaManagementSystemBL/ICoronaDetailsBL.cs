@@ -7,7 +7,7 @@ namespace CoronaManagementSystemBL
     {
         List<CoronaDetailsDTO> GetAllCoronaDetials();
         CoronaDetailsDTO getCoronaDetailById(string id);
-        bool UpdateCoronaDetails(string PersonId, CoronaDetailsDTO theUserName);
+        CoronaDetailsDTO UpdateCoronaDetails(string PersonId, CoronaDetailsDTO theUserName);
         public int[] numberOfVaccinatorsInMonth();
     }
 }
